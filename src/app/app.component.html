@@ -28,10 +28,17 @@
         <mat-form-field> 
           <textarea matInput placeholder="Text to write" formControlName="text"></textarea> <!-- Text input -->
         </mat-form-field>
+
+        <button mat-button (click)='generateImage()'>Generate Image</button> <!-- Generate Image Button -->
       </div>
+
       <div class="col-sm-6">
-        <img src="http://www.apimages.com/Images/Ap_Creative_Stock_Header.jpg">
+        <img [src]="imageSource" *ngIf="imageSource; else noImageFound"> <!-- If imageSource has content, it will show this image -->
       </div>
+
+      <ng-template #noImageFound>
+          <img src=""> <!-- ELSE it will not show any image -->
+     </ng-template>
     </div>
   </form>
 </div>
